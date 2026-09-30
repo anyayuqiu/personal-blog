@@ -2,7 +2,7 @@
 title: "GalSpace1 项目文档"
 pubDate: 2026-05-02
 description: "Galgame游戏管理工具 — 基于 Spring Boot + Vue 3 的本地游戏库管理应用"
-image: "/1.webp"
+image: "./attachment/1.webp"
 category: "项目文档"
 draft: false
 slugId: "GalSpace1-docs"

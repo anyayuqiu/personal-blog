@@ -1,57 +1,73 @@
-name: Deploy to GitHub Pages
+name: Deploy blog to cloud server
 
 on:
   push:
-    branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+concurrency:
+  group: personal-blog-production
+  cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build
+  deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Install pnpm
+      - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 11
           run_install: false
-        
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'pnpm'
-      
-      - name: Install dependencies
-        run: pnpm install
-      
-      - name: Build
+          cache: pnpm
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build static site and search index
         run: pnpm build
-
-      - name: Upload
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'dist'
-  
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Check build output
+        run: test -s dist/index.html && test -d dist/pagefind
+      - name: Configure deployment SSH key
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.BLOG_DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.BLOG_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          test -n "$DEPLOY_SSH_KEY" && test -n "$DEPLOY_KNOWN_HOSTS"
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_SSH_KEY" > "$HOME/.ssh/blog_deploy"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/blog_deploy" "$HOME/.ssh/known_hosts"
+      - name: Publish the built site
+        env:
+          DEPLOY_COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          tar -czf - -C dist . | ssh -i "$HOME/.ssh/blog_deploy" \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20 \
+            blog-deploy@47.108.48.165 "deploy $DEPLOY_COMMIT"
+      - name: Check public deployment
+        env:
+          DEPLOY_COMMIT: ${{ github.sha }}
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 5 \
+            https://blog.yuuuxion.xyz/.deployment.json > /tmp/blog-deployment.json
+          python3 - <<'PY'
+          import json, os
+          with open('/tmp/blog-deployment.json') as f:
+              deployed = json.load(f)
+          assert deployed['commit'] == os.environ['DEPLOY_COMMIT'], deployed
+          print('Verified the deployed commit on the public site')
+          PY
+      - name: Remove temporary private key
+        if: always()
+        run: rm -f "$HOME/.ssh/blog_deploy"

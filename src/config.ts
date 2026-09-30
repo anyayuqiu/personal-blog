@@ -9,7 +9,7 @@ import type { I18nConfig } from "./types/i18n"
 export const siteConfig: SiteConfig = {
     title: "熊宇的个人博客",
     subTitle: "项目与技术记录",
-    rootSiteUrl: "https://example.com", // 上线前改为正式域名
+    rootSiteUrl: "https://blog.yuuuxion.xyz", // 上线前改为正式域名
 
     favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
 
@@ -48,7 +48,7 @@ export const profileConfig: ProfileConfig = {
     avatar: "/favicon/favicon.ico",
     name: "站点主人", // 上线前填写你的姓名或昵称
     description: "项目实践与技术学习",
-    indexPage: "https://example.com", // 上线前改为正式域名
+    indexPage: "https://www.yuuuxion.xyz", // 上线前改为正式域名
     startYear: 2026,
 }
 

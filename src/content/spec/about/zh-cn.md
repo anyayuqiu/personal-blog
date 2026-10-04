@@ -30,7 +30,7 @@
 - PyTorch / Transformer 相关实验经验（按实际情况填写）
 - VLM 机理可解释性研究
 
-## 项目
+## 部署项目
 
 - [Vibe Music：音乐资料展示站](/blog/personal/vibe-music/)
 

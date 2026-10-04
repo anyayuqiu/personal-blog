@@ -3,14 +3,16 @@ title: "Vibe Music 项目文档"
 pubDate: 2026-09-24
 description: "在线音乐网站，因版权原因，目前服务器不提供播放功能。"
 category: "项目文档"
-image: "./attachment/1.webp"
+image: "/covers/music1.webp"
 draft: false
 slugId: "vibe-music-project-docs"
 ---
 
 # Vibe Music 项目文档
 
-> [https://music.yuuuxion.xyz/](https://music.yuuuxion.xyz/)
+> 云部署地址：https://music.yuuuxion.xyz/](https://music.yuuuxion.xyz/)
+>
+> github开源地址：[[anyayuqiu/vibe-music: Vibe Music — 音乐资料展示站与 AI 音乐助手](https://github.com/anyayuqiu/vibe-music)](https://github.com/anyayuqiu/GalSpace2)
 >
 > 依据 2026 年 9 月当前工作区代码整理, 本文描述的是现在准备部署的“音乐资料展示站”版本, 仓库中仍保留部分原音乐播放器代码，因为版权原因开站点不提供音频服务。
 

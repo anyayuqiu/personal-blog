@@ -1,1 +1,9 @@
-暂未添加友链。
+- github项目：
+- [anyayuqiu/GalSpace: 🎮 Galgame 及 视觉小说 游戏管理工具 — 基于 Spring Boot + Vue 3 的本地游戏库管理应用，集成 VNDB 信息抓取、AI 翻译、分类管理等强大功能。](https://github.com/anyayuqiu/GalSpace)
+- [anyayuqiu/GalSpace2](https://github.com/anyayuqiu/GalSpace2)
+- [anyayuqiu/vibe-music: Vibe Music — 音乐资料展示站与 AI 音乐助手](https://github.com/anyayuqiu/vibe-music)
+- 部署项目：
+- [yuuuxion的小站](https://www.yuuuxion.xyz/)
+- [Vibe Music](https://music.yuuuxion.xyz/)
+- 资源下载：
+- [GalManager 1.0.0 压缩包](/uploadresources/GalManager%201.0.0.exe.zip)

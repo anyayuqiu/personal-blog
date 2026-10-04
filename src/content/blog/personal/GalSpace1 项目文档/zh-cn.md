@@ -2,15 +2,21 @@
 title: "GalSpace1 项目文档"
 pubDate: 2026-05-02
 description: "Galgame游戏管理工具 — 基于 Spring Boot + Vue 3 的本地游戏库管理应用"
-image: "./attachment/1.webp"
+image: "/covers/galspace1.webp"
 category: "项目文档"
 draft: false
-slugId: "GalSpace1-docs"
+slugId: "GalSpace1-project-docs"
 ---
 
 # GalSpace 项目文档
 
 🎮 **Galgame 游戏管理工具** — 基于 Spring Boot + Vue 3 的本地游戏库管理应用，集成 VNDB 信息抓取、AI 翻译、分类管理等强大功能。
+
+---
+
+项目地址：[anyayuqiu/GalSpace: 🎮 Galgame 及 视觉小说 游戏管理工具 — 基于 Spring Boot + Vue 3 的本地游戏库管理应用，集成 VNDB 信息抓取、AI 翻译、分类管理等强大功能。](https://github.com/anyayuqiu/GalSpace)
+
+---
 
 ## ✨ 功能特点
 

@@ -1,6 +1,6 @@
 ---
 title: "Qwen3-VL-4B 跨模态回路筛查与视觉 Token 剪枝实验报告"
-pubDate: 2026-09-28
+pubDate: 2026-09-24
 description: "run_20260916_fft_vn：FFT 同布局 V−N 筛查、head 消融、Q+O 紧凑化与视觉 token 选择"
 category: "实验报告"
 image: "/covers/05_circuit_map_distribution.png"

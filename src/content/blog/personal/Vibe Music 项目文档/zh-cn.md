@@ -1,6 +1,6 @@
 ---
 title: "Vibe Music 项目文档"
-pubDate: 2026-09-24
+pubDate: 2026-09-26
 description: "在线音乐网站，因版权原因，目前服务器不提供播放功能。"
 category: "项目文档"
 image: "/covers/music1.webp"
@@ -69,17 +69,27 @@ vibe-music/
 
 ![](./attachment/1.webp)
 
+<div align="center"> 主页面</div>
+
 ![](./attachment/2.webp)
 
 ![](./attachment/3.webp)
 
 ![](attachment/4.webp)
 
+<div align="center"> 功能页面一</div>
+
 ![](./attachment/5.webp)
 
 ![](./attachment/6.webp)
 
-![](./attachment/7.webp)
+<div align="center"> 功能页面二</div>
+
+![Agent 功能截图一](./attachment/1791363373995.png)
+
+![Agent 功能截图二](./attachment/1791363417136.png)
+
+<div align="center"> Agent功能</div>
 
 ### 3.2 管理端
 
